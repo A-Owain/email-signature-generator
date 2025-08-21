@@ -52,7 +52,7 @@ h2 {
     font-family: "PingAR LT Bold", sans-serif;
     color: #0B3C6E;
     margin-top: 20px;
-    align-items: left;
+    align-content: left;
 }
 
 p{
