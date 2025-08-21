@@ -22,11 +22,12 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 90%;
     margin: auto;
+    margin-top: 15%;
     background: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .signature-wrapper {
