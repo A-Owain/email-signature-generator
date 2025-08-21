@@ -16,7 +16,7 @@
 
 body {
     font-family: "PingAR LT Regular", sans-serif;
-    background-image: url("/static/Images/main-banner.svg") no-repeat center center;
+    background-image: url("/static/Images/main-banner.svg");
     background-size: cover; /* Adjusted to use the correct syntax */
     background-color: #FBFCFD;
     padding: 20px;
