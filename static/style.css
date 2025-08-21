@@ -128,7 +128,7 @@ form input::placeholder {
 }
 
 button {
-    padding: 16px 16px 10px 10px;
+    padding: 10px 10px 6px 10px;
     font-family: "PingAR LT Medium", sans-serif;
     font-size: 16px;
     background: #0B3C6E;
