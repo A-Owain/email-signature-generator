@@ -33,6 +33,17 @@ header {
     margin-bottom: 10px;
 }
 
+header p {
+    font-family: "PingAR LT Medium", sans-serif;
+    color: #fff;
+    margin: 5px 0;
+}
+
+header h1 {
+    color: #fff;
+    text-decoration: none;
+}
+
 h1 {
     font-family: "PingAR LT Bold", sans-serif;
     color: #FFFFFF;
