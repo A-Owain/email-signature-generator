@@ -42,6 +42,8 @@ header p {
 header h1 {
     color: #fff;
     text-decoration: none;
+    font-family: "PingAR LT Bold", sans-serif;
+    font-size: 64px;
 }
 
 h1 {
