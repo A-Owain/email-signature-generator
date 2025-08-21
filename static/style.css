@@ -48,6 +48,11 @@ body {
     font-family: "PingAR LT Regular", sans-serif;
 }
 
+h1 {
+    font-family: "PingAR LT Bold", sans-serif;
+    color: #0B3C6E;
+}
+
 h2 {
     font-family: "PingAR LT Bold", sans-serif;
     color: #0B3C6E;
