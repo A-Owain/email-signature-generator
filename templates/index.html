@@ -22,9 +22,7 @@
             <div class="overlay-text phone" id="phone-text">8001249000</div>
         </div>
 
-        <h2>Customize Your Signature</h2>
-        <p>If you don't want to put your mobile number, just leave it empty</p>
-
+        
         <form id="signature-form" onsubmit="return false;">
             <input type="text" placeholder="Name" oninput="updateField('name-text', this.value)">
             <input type="text" placeholder="Position" oninput="updateField('position-text', this.value)">
@@ -33,7 +31,10 @@
             <button type="button" onclick="downloadSignature()">Download PNG</button>
         </form>
     </div>
-
+    
+    <h2>Customize Your Signature</h2>
+    <p>If you don't want to put your mobile number, just leave it empty</p>
+    
     <script>
         function updateField(id, value) {
             document.getElementById(id).textContent = value;
