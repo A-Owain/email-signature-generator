@@ -16,7 +16,7 @@
 
 body {
     font-family: "PingAR LT Regular", sans-serif;
-    background-image: image('./Images/main-banner.png');
+    background-image: image('./Images/main-banner.png') no-repeat center center fixed;
     background: #FBFCFD;
     padding: 20px;
     text-align: center;
