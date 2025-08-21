@@ -23,6 +23,21 @@ body {
     text-align: center;
 }
 
+header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-family: "PingAR LT Bold", sans-serif;
+    color: #FFFFFF;
+}
+
 .container {
     max-width: 90%;
     margin: auto;
