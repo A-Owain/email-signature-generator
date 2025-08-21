@@ -105,7 +105,7 @@ p{
 }
 
 form input {
-    display: block;
+    display: inline-block;
     margin: 10px auto;
     padding: 8px;
     width: 300px;
@@ -117,6 +117,7 @@ button {
     background: #0B3C6E;
     color: white;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
     margin-top: 10px;
 }
