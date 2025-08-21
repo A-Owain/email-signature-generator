@@ -50,13 +50,13 @@ body {
 
 /* Example positioning — adjust as per design */
 .name {
-    top: 69px;
+    top: 52px;
     left: 358px;
     font-weight: bold;
 }
 
 .position {
-    top: 100px;
+    top: 86px;
     left: 358px;
     font-size: 14px;
 }
