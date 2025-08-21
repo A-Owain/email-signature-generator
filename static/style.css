@@ -105,6 +105,7 @@ p{
 }
 
 form input {
+    font-family: "PingAR LT Regular", sans-serif;
     display: inline-block;
     margin: 10px auto;
     padding: 8px;
