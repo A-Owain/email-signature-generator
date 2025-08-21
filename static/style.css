@@ -110,6 +110,18 @@ form input {
     padding: 8px;
     width: 300px;
     font-size: 16px;
+    border: 1.4px solid #E4E8F1;
+    border-radius: 6px;
+    background-color: #FBFCFD;
+}
+
+form input:focus {
+    border-color: #0B3C6E;
+    outline: none;
+}
+
+form input::placeholder {
+    color: #4B5A81;
 }
 
 button {
