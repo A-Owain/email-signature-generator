@@ -52,14 +52,14 @@ h2 {
     font-family: "PingAR LT Bold", sans-serif;
     color: #0B3C6E;
     margin-top: 20px;
-    align-content: left;
+    text-align: left;
 }
 
 p{
     font-family: "PingAR LT Medium", sans-serif;
     color: #333;
     margin-top: 10px;
-    align-content: left;
+    text-align: left;
 }
 
 /* Example positioning — adjust as per design */
