@@ -48,6 +48,18 @@ body {
     font-family: "PingAR LT Regular", sans-serif;
 }
 
+h2 {
+    font-family: "PingAR LT Bold", sans-serif;
+    color: #0B3C6E;
+    margin-top: 20px;
+}
+
+p{
+    font-family: "PingAR LT Medium", sans-serif;
+    color: #333;
+    margin-top: 10px;
+}
+
 /* Example positioning — adjust as per design */
 .name {
     top: 52px;
