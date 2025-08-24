@@ -36,6 +36,7 @@ header {
 header p {
     font-family: "PingAR LT Medium", sans-serif;
     color: #fff;
+    text-decoration: none;
     margin: 5px 0;
 }
 
