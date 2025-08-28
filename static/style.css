@@ -61,6 +61,18 @@ h1 {
     border-radius: 12px;
 }
 
+.department-select{
+    font-family: "PingAR LT Regular", sans-serif;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 320px;
+    font-size: 16px;
+    border: 1.4px solid #E4E8F1;
+    border-radius: 6px;
+    background-color: #FBFCFD;
+}
+
 .signature-wrapper {
     position: relative;
     display: inline-block;
