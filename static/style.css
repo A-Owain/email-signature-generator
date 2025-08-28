@@ -103,7 +103,6 @@ p{
 
 /* Example positioning — adjust as per design */
 .name {
-    font-family: "PingAR LT Bold", sans-serif;
     top: 52px;
     left: 358px;
     font-weight: bold;
