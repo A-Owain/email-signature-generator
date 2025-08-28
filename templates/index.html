@@ -111,6 +111,26 @@
         // Clear position-text field
         updateField('position-text', '');
     }
+    const rolesByDepartment = {
+    Marketing: ['Marketing Specialist', 'Marketing Manager', 'Creative Lead'],
+    Sales: ['Sales Executive', 'Sales Manager', 'Account Manager'],
+    Compliance: ['Compliance Officer', 'Risk Analyst', 'AML Specialist']
+};
+
+function populateRoles(department) {
+    const roleSelect = document.getElementById("role");
+    roleSelect.innerHTML = '<option value="">Select Role</option>'; // Clear previous
+
+    if (rolesByDepartment[department]) {
+        rolesByDepartment[department].forEach(role => {
+            const option = document.createElement("option");
+            option.value = role;
+            option.text = role;
+            roleSelect.appendChild(option);
+        });
+    }
+}
+
 </script>
 
 </body>
