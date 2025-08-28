@@ -29,12 +29,28 @@
 
         
         <form id="signature-form" onsubmit="return false;">
-            <input type="text" placeholder="Name" oninput="updateField('name-text', this.value)">
-            <input type="text" placeholder="Position" oninput="updateField('position-text', this.value)">
-            <input type="email" placeholder="Email" oninput="updateField('email-text', this.value)">
-            <input type="text" placeholder="Phone" oninput="updateField('phone-text', this.value)">
-            <br><button type="button" onclick="downloadSignature()">Download PNG</button>
-        </form>
+    <input type="text" placeholder="Name" oninput="updateField('name-text', this.value)">
+    
+    <!-- Department Dropdown -->
+    <select id="department-select" onchange="updateRoles()">
+        <option value="">Select Department</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Finance">Finance</option>
+        <option value="HR">HR</option>
+        <option value="Operations">Operations</option>
+        <!-- Add more departments as needed -->
+    </select>
+
+    <!-- Roles Dropdown -->
+    <select id="role-select" onchange="updateField('position-text', this.value)">
+        <option value="">Select Role</option>
+    </select>
+
+    <input type="email" placeholder="Email" oninput="updateField('email-text', this.value)">
+    <input type="text" placeholder="Phone" oninput="updateField('phone-text', this.value)">
+    
+    <br><button type="button" onclick="downloadSignature()">Download PNG</button>
+</form>
         <br>
 
         <h2>Instructions:</h2>
@@ -65,5 +81,37 @@
             });
         }
     </script>
+
+    <script>
+    const departmentRoles = {
+        "Marketing": ["Marketing Manager", "Content Specialist", "Graphic Designer"],
+        "Finance": ["Finance Analyst", "Accountant", "Controller"],
+        "HR": ["HR Manager", "Recruiter", "Payroll Coordinator"],
+        "Operations": ["Operations Lead", "Logistics Coordinator", "Process Analyst"]
+        // Add more departments and roles as needed
+    };
+
+    function updateRoles() {
+        const deptSelect = document.getElementById('department-select');
+        const roleSelect = document.getElementById('role-select');
+        const selectedDept = deptSelect.value;
+
+        // Clear previous roles
+        roleSelect.innerHTML = '<option value="">Select Role</option>';
+
+        if (selectedDept && departmentRoles[selectedDept]) {
+            departmentRoles[selectedDept].forEach(role => {
+                const option = document.createElement('option');
+                option.value = role;
+                option.textContent = role;
+                roleSelect.appendChild(option);
+            });
+        }
+
+        // Clear position-text field
+        updateField('position-text', '');
+    }
+</script>
+
 </body>
 </html>
