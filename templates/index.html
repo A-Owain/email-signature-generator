@@ -14,8 +14,8 @@
         <img src="{{ url_for('static', filename='Images/logo.svg') }}" alt="AlRaedah Logo" class="logo">
         <h1>Email Signature Generator</h1>
         <p>Generate your professional email signature easily!</p>
-        <p>Powered by <a href="https://www.alraedah.sa" target="_blank">Al Raedah</a></p>
     </header>
+
     <div class="container">
         <div class="signature-wrapper" id="signature-preview">
             <img src="{{ url_for('static', filename='Images/bg.png') }}" alt="Signature Background" class="signature-bg">
@@ -27,32 +27,37 @@
             <div class="overlay-text phone" id="phone-text">+966</div>
         </div>
 
-        
         <form id="signature-form" onsubmit="return false;">
-    <input type="text" placeholder="Name" oninput="updateField('name-text', this.value)">
-    
-    <!-- Department Dropdown -->
-    <select id="department-select" onchange="updateRoles()">
-        <option value="">Select Department</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Finance">Finance</option>
-        <option value="HR">HR</option>
-        <option value="Operations">Operations</option>
-        <!-- Add more departments as needed -->
-    </select>
+            <input type="text" placeholder="Name" oninput="updateField('name-text', this.value)">
+            <input type="email" placeholder="Email" oninput="updateField('email-text', this.value)">
+            <input type="text" placeholder="Phone" oninput="updateField('phone-text', this.value)">
 
-    <!-- Roles Dropdown -->
-    <select id="role-select" onchange="updateField('position-text', this.value)">
-        <option value="">Select Role</option>
-    </select>
+            <select id="department" onchange="populateRoles()" required>
+                <option value="">Select Department</option>
+                <option value="PMO">PMO</option>
+                <option value="IT">IT</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Data">Data</option>
+                <option value="Product">Product</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Risk">Risk</option>
+                <option value="Legal">Legal</option>
+                <option value="Customer_Care">Customer Care</option>
+                <option value="Compliance">Compliance</option>
+                <option value="Digital_Lending">Digital Lending</option>
+                <option value="Direct_Lending">Direct Lending</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+            </select>
 
-    <input type="email" placeholder="Email" oninput="updateField('email-text', this.value)">
-    <input type="text" placeholder="Phone" oninput="updateField('phone-text', this.value)">
-    
-    <br><button type="button" onclick="downloadSignature()">Download PNG</button>
-</form>
+            <select id="role" onchange="updateSignatureRole()" required>
+                <option value="">Select Role</option>
+            </select>
+
+            <br><button type="button" onclick="downloadSignature()">Download PNG</button>
+        </form>
+
         <br>
-
         <h2>Instructions:</h2>
         <p>1. Fill in your details in the form above.</p>
         <p>2. The signature preview will update in real-time.</p>
@@ -60,7 +65,6 @@
         <p>4. Use the generated signature in your email client.</p>
         <p>5. If you don't want to put your mobile number, just leave it empty.</p>
     </div>
-    
 
     <script>
         function updateField(id, value) {
@@ -70,68 +74,66 @@
         function downloadSignature() {
             const element = document.getElementById('signature-preview');
             html2canvas(element, {
-                scale: 4,
-                useCORS: true,
-                backgroundColor: null
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'signature.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            });
+            scale: 4,
+            useCORS: true,
+            backgroundColor: null,
+            windowWidth: element.scrollWidth,
+            windowHeight: element.scrollHeight
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'signature.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+        }
+
+        // Define department roles
+        const rolesByDepartment = {
+            PMO: ["Head of Strategy", "Head of PMO", "IT Program Manager", "Business Analyst"],
+            IT: ["Head of IT", "Senior Manager of Technology Operation & Applications", "Senior Analyst", "Senior Technical & Network Engineer", "IT Support Administrator", "Senior DevOps Engineer", "Outsourced"],
+            Engineering: ["Head of Engineering", "Senior Software Engineer", "Staff IOS Engineer", "Senior Analyst", "Outsourced"],
+            Data: ["Head of Data", "Analyst", "Associate Data Engineer", "Data Engineer", "Data Analyst", "Outsourced"],
+            Product: ["Principal", "Lead", "Senior"],
+            Cybersecurity: ["CISO", "Cybersecurity Engineer", "Cybersecurity Analyst", "Threat Intelligence Analyst", "Outsourced"],
+            Risk: ["Head of Risk", "Risk Officer", "AVP", "Credit Manager", "Credit underwriting senior analyst", "Credit Underwriting Analyst", "Credit Underwriting Analyst", "Credit Underwriting Analyst", "AVP - Operations Manager", "Senior Associate", "Associate", "Senior Operations Analyst", "Senior Analyst", "Analyst", "Credit Administration Analyst", "Operations Analyst", "Operations Analyst"],
+            Legal: ["Senior Associate", "Associate", "Senior legal analyst", "Team Leader", "Legal Analyst", "Analyst", "Collection Manager", "Senior Analyst", "Senior Collection Officer", "Collection Officer", "Senior Corporate government Analyst"],
+            Customer_Care: ["Head of Customer Care", "Senior Customer Care Specialist", "Customer Care Specialist"],
+            Compliance: ["VP - Head of Compliance", "Senior AML Officer", "AML & Compliance Officer", "Compliance Specialist"],
+            Digital_Lending: ["Commercial Director", "Digital Marketing Manager", "Customer Success Manager", "Customer Success Specialist"],
+            Direct_Lending: ["Head of Sales", "Sales Manager", "Senior Team Leader", "Team Leader", "Growth Manager", "Growth Consultant II", "Growth Consultant I", "Growth Associate", "Key Accounts Manager", "Senior Key Accounts Manager", "Analyst", "Sales Operations", "Business Development Representative", "Quality Assurance Specialist"],
+            Marketing: ["Senior Communication Specialist", "Marketing Executive", "Social Media Specialist", "Marketing Specialist"],
+            Finance: ["VP - Head of Finance", "VP - Finance", "Senior Financial Associate", "Financial Associate", "Senior Finance Analyst", "Financial Analyst"]
+        };
+
+        function populateRoles() {
+            const departmentSelect = document.getElementById("department");
+            const roleSelect = document.getElementById("role");
+            const selectedDept = departmentSelect.value;
+
+            // Clear previous roles
+            roleSelect.innerHTML = '<option value="">Select Role</option>';
+
+            // Populate new roles
+            if (rolesByDepartment[selectedDept]) {
+                rolesByDepartment[selectedDept].forEach(role => {
+                    const option = document.createElement("option");
+                    option.value = role;
+                    option.text = role;
+                    roleSelect.appendChild(option);
+                });
+            }
+
+            // Clear role text
+            document.getElementById("position-text").innerText = "";
+        }
+
+        function updateSignatureRole() {
+            const role = document.getElementById("role").value;
+            document.getElementById("position-text").innerText = role;
         }
     </script>
-
-    <script>
-    const departmentRoles = {
-        "Marketing": ["Marketing Manager", "Content Specialist", "Graphic Designer"],
-        "Finance": ["Finance Analyst", "Accountant", "Controller"],
-        "HR": ["HR Manager", "Recruiter", "Payroll Coordinator"],
-        "Operations": ["Operations Lead", "Logistics Coordinator", "Process Analyst"]
-        // Add more departments and roles as needed
-    };
-
-    function updateRoles() {
-        const deptSelect = document.getElementById('department-select');
-        const roleSelect = document.getElementById('role-select');
-        const selectedDept = deptSelect.value;
-
-        // Clear previous roles
-        roleSelect.innerHTML = '<option value="">Select Role</option>';
-
-        if (selectedDept && departmentRoles[selectedDept]) {
-            departmentRoles[selectedDept].forEach(role => {
-                const option = document.createElement('option');
-                option.value = role;
-                option.textContent = role;
-                roleSelect.appendChild(option);
-            });
-        }
-
-        // Clear position-text field
-        updateField('position-text', '');
-    }
-    const rolesByDepartment = {
-    Marketing: ['Marketing Specialist', 'Marketing Manager', 'Creative Lead'],
-    Sales: ['Sales Executive', 'Sales Manager', 'Account Manager'],
-    Compliance: ['Compliance Officer', 'Risk Analyst', 'AML Specialist']
-};
-
-function populateRoles(department) {
-    const roleSelect = document.getElementById("role");
-    roleSelect.innerHTML = '<option value="">Select Role</option>'; // Clear previous
-
-    if (rolesByDepartment[department]) {
-        rolesByDepartment[department].forEach(role => {
-            const option = document.createElement("option");
-            option.value = role;
-            option.text = role;
-            roleSelect.appendChild(option);
-        });
-    }
-}
-
-</script>
-
+<footer>
+    <p>Powered by <a href="https://www.alraedah.sa" target="_blank">Al Raedah</a></p>
+</footer>
 </body>
 </html>
