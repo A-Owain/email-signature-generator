@@ -36,7 +36,21 @@ header {
 header p {
     font-family: "PingAR LT Medium", sans-serif;
     color: #fff;
+    text-align: center;
     text-decoration: none;
+    margin: 5px 0;
+}
+
+footer{
+    height: 30%;
+}
+
+footer p {
+    font-family: "PingAR LT Medium", sans-serif;
+    color: #fff;
+    text-align: right;
+    padding-right: 3.5%;
+    text-decoration:none;
     margin: 5px 0;
 }
 
