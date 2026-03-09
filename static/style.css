@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'PingAR LT Bold';
+    src: url('./Fonts/PingAR+LT-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PingAR LT Medium';
+    src: url('./Fonts/PingAR+LT-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PingAR LT Regular';
+    src: url('./Fonts/PingAR+LT-Regular.otf') format('opentype');
+}
+
+
+body {
+    font-family: "PingAR LT Regular", sans-serif;
+    background-image: url("./Images/main-banner.svg");
+    background-size: cover; /* Adjusted to use the correct syntax */
+    background-color: #FBFCFD;
+    padding: 20px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-family: "PingAR LT Medium", sans-serif;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+footer{
+    height: 30%;
+}
+
+footer p {
+    font-family: "PingAR LT Medium", sans-serif;
+    color: #fff;
+    text-align: right;
+    padding-right: 3.5%;
+    text-decoration:none;
+    margin: 5px 0;
+}
+
+header h1 {
+    color: #fff;
+    text-decoration: none;
+    font-family: "PingAR LT Bold", sans-serif;
+    font-size: 64px;
+}
+
+h1 {
+    font-family: "PingAR LT Bold", sans-serif;
+    color: #FFFFFF;
+}
+
+.container {
+    max-width: 90%;
+    margin: auto;
+    margin-top: 15%;
+    background: #F1F3F9;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+form select {
+    font-family: "PingAR LT Regular", sans-serif;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 300px;
+    font-size: 16px;
+    border: 1.4px solid #E4E8F1;
+    border-radius: 6px;
+    background-color: #FBFCFD;
+    color: #0B3C6E;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+form select:focus {
+    border-color: #0B3C6E;
+    outline: none;
+}
+
+form select option {
+    font-family: "PingAR LT Regular", sans-serif;
+}
+
+.signature-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.signature-bg {
+    width: 800px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.overlay-text {
+    position: absolute;
+    color: #0B3C6E;
+    font-size: 24px;
+    font-family: "PingAR LT Regular", sans-serif;
+}
+
+h1 {
+    font-family: "PingAR LT Bold", sans-serif;
+    color: #0B3C6E;
+}
+
+h2 {
+    font-family: "PingAR LT Medium", sans-serif;
+    font-size: 20px;
+    color: #0B3C6E;
+    margin-top: 20px;
+    text-align: left;
+}
+
+p{
+    font-family: "PingAR LT Medium", sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* Example positioning — adjust as per design */
+.name {
+    top: 52px;
+    left: 358px;
+    font-weight: bold;
+}
+
+.position {
+    top: 86px;
+    left: 358px;
+    font-size: 14px;
+}
+
+.email {
+    top: 143px;
+    left: 383px;
+    font-size: 12px;
+    color: #4B82BC;
+    font-weight: bold;
+}
+
+.phone {
+    top: 208px;
+    left: 383px;
+    font-size: 12px;
+    color: #4B82BC;
+    font-weight: bold;
+}
+
+.domain {
+    top: 176px;
+    left: 383px;
+    font-size: 12px;
+    color: #4B82BC;
+    font-weight: bold;
+}
+
+form input {
+    font-family: "PingAR LT Regular", sans-serif;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 300px;
+    font-size: 16px;
+    border: 1.4px solid #E4E8F1;
+    border-radius: 6px;
+    background-color: #FBFCFD;
+}
+
+form input:focus {
+    border-color: #0B3C6E;
+    outline: none;
+}
+
+form input::placeholder {
+    color: #4B5A81;
+}
+
+button {
+    padding: 10px 10px 6px 10px;
+    font-family: "PingAR LT Medium", sans-serif;
+    font-size: 16px;
+    background: #0B3C6E;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
