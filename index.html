@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Signature Generator</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/sju4guc.css">
+    <link rel="icon" href="./static/Images/favicon.png" type="image/png">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <img src="./static/Images/logo.svg" alt="AlRaedah Logo" class="logo">
+        <h1>Email Signature Generator</h1>
+        <p>Generate your professional email signature easily!</p>
+    </header>
+
+    <div class="container">
+        <div class="signature-wrapper" id="signature-preview">
+            <img src="./static/Images/bg.png" alt="Signature Background" class="signature-bg">
+
+            <div class="overlay-text name" id="name-text"></div>
+            <div class="overlay-text position" id="position-text"></div>
+            <div class="overlay-text email" id="email-text"></div>
+            <div class="overlay-text domain" id="domain-text">www.alraedah.sa</div>
+            <div class="overlay-text phone" id="phone-text">+966</div>
+        </div>
+
+        <form id="signature-form" onsubmit="return false;">
+            <input type="text" placeholder="Name" oninput="updateField('name-text', this.value)">
+            <input type="email" placeholder="Email" oninput="updateField('email-text', this.value)">
+            <input type="text" placeholder="Phone" oninput="updateField('phone-text', this.value)">
+
+            <select id="department" onchange="populateRoles()" required>
+                <option value="">Select Department</option>
+                <option value="PMO">PMO</option>
+                <option value="IT">IT</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Data">Data</option>
+                <option value="Product">Product</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Risk">Risk</option>
+                <option value="Legal">Legal</option>
+                <option value="Customer_Care">Customer Care</option>
+                <option value="Compliance">Compliance</option>
+                <option value="Digital_Lending">Digital Lending</option>
+                <option value="Direct_Lending">Direct Lending</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+            </select>
+
+            <select id="role" onchange="updateSignatureRole()" required>
+                <option value="">Select Role</option>
+            </select>
+
+            <br><button type="button" onclick="downloadSignature()">Download PNG</button>
+        </form>
+
+        <br>
+        <h2>Instructions:</h2>
+        <p>1. Fill in your details in the form above.</p>
+        <p>2. The signature preview will update in real-time.</p>
+        <p>3. Click the "Download PNG" button to save your signature.</p>
+        <p>4. Use the generated signature in your email client.</p>
+        <p>5. If you don't want to put your mobile number, just leave it empty.</p>
+    </div>
+
+    <script>
+        function updateField(id, value) {
+            document.getElementById(id).textContent = value;
+        }
+
+        function downloadSignature() {
+            const element = document.getElementById('signature-preview');
+            html2canvas(element, {
+            scale: 4,
+            useCORS: true,
+            backgroundColor: null,
+            windowWidth: element.scrollWidth,
+            windowHeight: element.scrollHeight
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'signature.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+        }
+
+        // Define department roles
+        const rolesByDepartment = {
+            PMO: ["Head of Strategy", "Head of PMO", "IT Program Manager", "Business Analyst"],
+            IT: ["Head of IT", "Senior Manager of Technology Operation & Applications", "Senior Analyst", "Senior Technical & Network Engineer", "IT Support Administrator", "Senior DevOps Engineer", "Outsourced"],
+            Engineering: ["Head of Engineering", "Senior Software Engineer", "Staff IOS Engineer", "Senior Analyst", "Outsourced"],
+            Data: ["Head of Data", "Analyst", "Associate Data Engineer", "Data Engineer", "Data Analyst", "Outsourced"],
+            Product: ["Principal", "Lead", "Senior"],
+            Cybersecurity: ["CISO", "Cybersecurity Engineer", "Cybersecurity Analyst", "Threat Intelligence Analyst", "Outsourced"],
+            Risk: ["Head of Risk", "Risk Officer", "AVP", "Credit Manager", "Credit underwriting senior analyst", "Credit Underwriting Analyst", "Credit Underwriting Analyst", "Credit Underwriting Analyst", "AVP - Operations Manager", "Senior Associate", "Associate", "Senior Operations Analyst", "Senior Analyst", "Analyst", "Credit Administration Analyst", "Operations Analyst", "Operations Analyst"],
+            Legal: ["Senior Associate", "Associate", "Senior legal analyst", "Team Leader", "Legal Analyst", "Analyst", "Collection Manager", "Senior Analyst", "Senior Collection Officer", "Collection Officer", "Senior Corporate government Analyst"],
+            Customer_Care: ["Head of Customer Care", "Senior Customer Care Specialist", "Customer Care Specialist"],
+            Compliance: ["VP - Head of Compliance", "Senior AML Officer", "AML & Compliance Officer", "Compliance Specialist"],
+            Digital_Lending: ["Commercial Director", "Digital Marketing Manager", "Customer Success Manager", "Customer Success Specialist"],
+            Direct_Lending: ["Head of Sales", "Sales Manager", "Senior Team Leader", "Team Leader", "Growth Manager", "Growth Consultant II", "Growth Consultant I", "Growth Associate", "Key Accounts Manager", "Senior Key Accounts Manager", "Analyst", "Sales Operations", "Business Development Representative", "Quality Assurance Specialist"],
+            Marketing: ["Senior Communication Specialist", "Marketing Executive", "Social Media Specialist", "Marketing Specialist"],
+            Finance: ["VP - Head of Finance", "VP - Finance", "Senior Financial Associate", "Financial Associate", "Senior Finance Analyst", "Financial Analyst"]
+        };
+
+        function populateRoles() {
+            const departmentSelect = document.getElementById("department");
+            const roleSelect = document.getElementById("role");
+            const selectedDept = departmentSelect.value;
+
+            // Clear previous roles
+            roleSelect.innerHTML = '<option value="">Select Role</option>';
+
+            // Populate new roles
+            if (rolesByDepartment[selectedDept]) {
+                rolesByDepartment[selectedDept].forEach(role => {
+                    const option = document.createElement("option");
+                    option.value = role;
+                    option.text = role;
+                    roleSelect.appendChild(option);
+                });
+            }
+
+            // Clear role text
+            document.getElementById("position-text").innerText = "";
+        }
+
+        function updateSignatureRole() {
+            const role = document.getElementById("role").value;
+            document.getElementById("position-text").innerText = role;
+        }
+    </script>
+<footer>
+    <p>Powered by <a href="https://www.alraedah.sa" target="_blank">Al Raedah</a></p>
+</footer>
+</body>
+</html>
